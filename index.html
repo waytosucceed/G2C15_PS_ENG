@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Topics</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      /* Custom styles for a better layout and larger buttons */
+      body {
+        background-color: #CEE5D0;
+        font-family: Arial, sans-serif;
+      }
+
+
+      .container {
+        margin-top: 30px;
+      }
+
+      h1 {
+        /* margin-bottom: 30px; */
+        color: #004080; /* Dark Blue */
+      }
+
+      #buttonContainer {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .btn-large {
+        font-size: 18px;
+        padding: 15px 30px;
+        margin: 10px;
+        border-radius: 5px;
+        transition: background-color 0.3s, color 0.3s;
+      }
+
+      .btn-large:hover {
+        background-color: #003366; /* Darker Blue */
+        color: white;
+      }
+
+      .btn.disabled-btn {
+        background-color: #d3d3d3; /* Light Gray */
+        border-color: #d3d3d3;
+        color: #a9a9a9; /* Dark Gray */
+        cursor: not-allowed;
+      }
+
+      .btn-view-results {
+        font-size: 18px;
+        padding: 15px 30px;
+        margin-top: 20px;
+        border-radius: 5px;
+        transition: background-color 0.3s, color 0.3s;
+        background-color: #5bc0de; /* Bootstrap's info color */
+        color: white;
+        border: none;
+      }
+
+      .btn-view-results:hover {
+        background-color: #31b0d5; /* Darker Bootstrap info color */
+      }
+
+      .btn-view-results:disabled {
+        background-color: #d3d3d3;
+        color: #a9a9a9;
+        cursor: not-allowed;
+      }
+
+      .instructions-container {
+        margin-top: 20px;
+        padding: 20px;
+        background-color: #ffffff; /* White background for contrast */
+        border: 1px solid #ddd; /* Light border for definition */
+        border-radius: 8px; /* Rounded corners for a softer look */
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+      }
+
+      .instructions-heading {
+        color: #004080; /* Dark Blue */
+        margin-bottom: 20px;
+        font-size: 24px; /* Larger font size for heading */
+        font-weight: bold; /* Bold text for emphasis */
+      }
+
+      .instructions-list {
+        font-size: 18px;
+        line-height: 1.6;
+        list-style-type: decimal;
+        padding-left: 20px; /* Add space for list markers */
+      }
+
+      .instructions-list li {
+        margin-bottom: 15px; /* Space between list items */
+      }
+
+      .instructions-email {
+        color: #5bc0de; /* Bootstrap's info color */
+        text-decoration: none;
+        font-weight: bold; /* Bold text for email */
+      }
+
+      .instructions-email:hover {
+        color: #31b0d5; /* Darker Bootstrap info color */
+        text-decoration: underline;
+      }
+    </style>
+    <script>
+      const uniqueKey = 2_15;
+      const data = JSON.parse(localStorage.getItem(uniqueKey)) || {};
+      console.log(data, "dataindex");
+
+      document.addEventListener("DOMContentLoaded", function () {
+        fetch("questions.json")
+          .then((response) => response.json())
+          .then((data) => {
+            populateButtons(data.topics);
+            updateViewResultsButton(data.topics);
+          })
+          .catch((error) =>
+            console.error("Error loading the JSON file:", error)
+          );
+      });
+
+      function populateButtons(topics) {
+        const buttonContainer = document.getElementById("buttonContainer");
+        buttonContainer.innerHTML = ""; // Clear previous buttons
+        console.log(topics, "topics");
+
+        topics.forEach((topic) => {
+          const button = document.createElement("button");
+          button.className = "btn btn-primary btn-large";
+          button.innerText = topic.heading;
+          button.onclick = () => {
+            window.location.href = `questions.html?topic=${encodeURIComponent(
+              topic.heading
+            )}`;
+          };
+
+          // const isCompleted = localStorage.getItem(uniqueKey) && JSON.parse(localStorage.getItem(uniqueKey))[topic.heading + '_completed'];
+
+          // // Check if the topic has been completed and disable the button if necessary
+          // if (localStorage.getItem(topic.heading + '_completed')) {
+
+          //   button.classList.add('disabled-btn');
+          //   button.disabled = true;
+          // }
+          const isCompleted =
+            localStorage.getItem(uniqueKey) &&
+            JSON.parse(localStorage.getItem(uniqueKey))[
+              topic.heading + "_completed"
+            ];
+
+          if (isCompleted) {
+            button.classList.add("disabled-btn");
+            button.disabled = true;
+          }
+
+          buttonContainer.appendChild(button);
+        });
+      }
+
+      function updateViewResultsButton(topics) {
+        const viewResultsButton = document.getElementById("viewResultsButton");
+        const allCompleted = topics.every(topic => {
+    const isCompleted = localStorage.getItem(uniqueKey) && JSON.parse(localStorage.getItem(uniqueKey))[topic.heading + '_completed'];
+    return isCompleted;
+  });
+
+  console.log("all", allCompleted);
+
+  if (allCompleted) {
+    viewResultsButton.disabled = false;
+
+  } else {
+    viewResultsButton.disabled = true;
+  }
+      }
+    </script>
+  </head>
+  <body>
+    <header class="header">
+      <img src="./assests/logo/Logo.png" alt="Logo" class="logo" />
+      <img src="./assests/logo/header.png" alt="Header" class="header-image" />
+    </header>
+    <main class="container">
+      <h1 class="text-center">Start the Practise Sheet</h1>
+      <div id="buttonContainer" class="text-center"></div>
+      <div class="text-center">
+        <!-- <button id="viewResultsButton" class="btn btn-view-results" disabled>
+        <a href="graph.html" style="color: white; text-decoration: none;">View Results</a>
+      </button> -->
+        <button id="viewResultsButton" class="btn btn-view-results" disabled>
+          <a href="graph.html" style="color: white; text-decoration: none"
+            >View Results</a
+          >
+        </button>
+
+        <div class="instructions-container">
+          <h2 class="text-center instructions-heading">Instructions</h2>
+          <ol class="instructions-list">
+            <li>Solve the practice sheet.</li>
+            <li>Once you are done then Download Report.</li>
+            <li>
+              Send the PDF to
+              <a
+                href="mailto:customercare@waytosucceedclasses.com"
+                class="instructions-email"
+                >customercare@waytosucceedclasses.com</a
+              >
+              or <br>
+              Save it in your drive and share it with your teacher.
+            </li>
+          </ol>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Results</title>
+    <link rel="stylesheet" href="wts.css" />
+    <link rel="icon" type="image/x-icon" href="Logo_last.png" />
+    <link rel="stylesheet" href="graph.css">
+    <link rel="stylesheet" href="styles.css">
+    <!-- Include Chart.js from CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Include html2canvas and jsPDF libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+
+  
+  </head>
+
+  <body>
+    <header class="header">
+      <img src="./assests/logo/Logo.png" alt="Logo" class="logo" />
+      <img src="./assests/logo/header.png" alt="Header" class="header-image" />
+    </header>
+    <button class="download-button" id="downloadBtn">Download Report</button>
+    <h3 id="classNameDisplay"></h3>
+    <div class="instructions-container">
+      <h2>Instructions</h2>
+      <ol>
+        <li>1. Download the Report.</li>
+        <br />
+        <li>
+          2. Send the PDF to
+          <a href="mailto:customercare@waytosucceedclasses.com">
+            customercare@waytosucceedclasses.com
+          </a>
+          or
+          <br />
+          Save it in your drive and share it with your teacher.
+        </li>
+      </ol>
+    </div>
+
+    <div class="marks-breakdown" id="breakdown">
+      <h2>Score</h2>
+      <ul id="marksList"></ul>
+    </div>
+
+    <div id="picdiv"></div>
+    <div id="questiondiv"></div>
+    <!-- Add this inside the <body> where appropriate -->
+    <div id="pagination-controls" style="text-align: center; margin: 20px 0">
+      <button id="prevPage" class="pagination-button">Previous</button>
+      <span id="pageNumber">Page 1</span>
+      <button id="nextPage" class="pagination-button">Next</button>
+    </div>
+   
+    
+    
+    <button class="download-button" id="downloadBtn2">Download Report</button>
+
+    <div class="loading-overlay" id="loadingOverlay">Downloading...</div>
+    
+
+    <script>
+      const uniqueKey = 2_15;
+      const className = "G2_C15";
+
+      document.getElementById("classNameDisplay").textContent = className;
+
+      // Helper function to get data from local storage under the unique key
+
+      function getFromLocalStorage(key) {
+        let storageData = JSON.parse(localStorage.getItem(key)) || {};
+        return storageData;
+      }
+
+      // getFromLocalStorage(uniqueKey);
+
+      // Variables to keep track of pagination
+      let currentPage = 0;
+      const questionsPerPage = 8; // Number of questions per page
+
+      // Function to handle pagination and update the display
+      function setupPagination() {
+        const questionDiv = document.getElementById("questiondiv");
+        const questions = Array.from(questionDiv.querySelectorAll("div"));
+
+        // Remove old pages
+        questionDiv.innerHTML = "";
+
+        // Create pages
+        for (let i = 0; i < questions.length; i += questionsPerPage) {
+          const pageDiv = document.createElement("div");
+          pageDiv.classList.add("question-page");
+          for (
+            let j = i;
+            j < i + questionsPerPage && j < questions.length;
+            j++
+          ) {
+            pageDiv.appendChild(questions[j]);
+          }
+          questionDiv.appendChild(pageDiv);
+        }
+
+        // Initialize the first page
+        updatePagination();
+      }
+
+      // Function to update the pagination display
+      function updatePagination() {
+        const questionPages = document.querySelectorAll(".question-page");
+        questionPages.forEach((page, index) => {
+          page.style.display = index === currentPage ? "block" : "none";
+        });
+
+        // Update the page number display
+        document.getElementById("pageNumber").textContent = `Page ${
+          currentPage + 1
+        } `;
+
+        // Enable/disable buttons based on the current page
+        document.getElementById("prevPage").disabled = currentPage === 0;
+        document.getElementById("nextPage").disabled =
+          currentPage === questionPages.length - 1;
+      }
+
+      // Event listeners for pagination buttons
+      document.getElementById("prevPage").addEventListener("click", () => {
+        if (currentPage > 0) {
+          currentPage--;
+          updatePagination();
+        }
+      });
+
+      document.getElementById("nextPage").addEventListener("click", () => {
+        const questionPages = document.querySelectorAll(".question-page");
+        if (currentPage < questionPages.length - 1) {
+          currentPage++;
+          updatePagination();
+        }
+      });
+
+      // Call setupPagination to initialize pagination when the page loads
+      setupPagination();
+
+      function clearLocalStorage() {
+        console.log("Clearing local storage...");
+        localStorage.removeItem(uniqueKey);
+
+       
+      }
+
+      // Function to load and display all results with '_question_content'
+      function loadAllResults() {
+        console.log(uniqueKey, "test");
+
+        // Clear existing content
+        const questionContentDiv = document.getElementById("questiondiv");
+        questionContentDiv.innerHTML = ""; // Clear content
+
+        const picContentDiv = document.getElementById("picdiv");
+        picContentDiv.style.display = "none"; // Hide picture content
+
+        // Display content for the unique key
+        displayContentForKey(uniqueKey);
+      }
+      
+      // picContentDiv.display = none;
+
+      // Function to display content based on the unique key
+      function displayContentForKey(uniqueKey) {
+        // Get the data associated with the uniqueKey
+        const data = getFromLocalStorage(uniqueKey);
+        console.log("data", data);
+
+        // Ensure data is an object and contains _question_content
+        if (data && typeof data === "object") {
+          Object.keys(data).forEach((key) => {
+            console.log("key", key);
+
+            // Check if the key includes "_question_content"
+            if (key.includes("_question_content")) {
+              console.log("ok");
+              const content = data[key];
+              const topicName = key.replace("_question_content", ""); // Extract topic name
+
+              // Create a container for each topic
+              const topicContainer = document.createElement("div");
+              topicContainer.style.marginBottom = "20px";
+              topicContainer.style.padding = "10px";
+              topicContainer.style.border = "1px solid #ddd";
+              topicContainer.style.borderRadius = "8px";
+              topicContainer.style.backgroundColor = "#fff";
+
+              // Create and append the topic heading
+              const heading = document.createElement("h3");
+              heading.textContent = topicName;
+              heading.style.marginTop = "0";
+              heading.style.color = "#D6B65B";
+              topicContainer.appendChild(heading);
+
+              // Create and append the content
+              const contentDiv = document.createElement("div");
+              contentDiv.innerHTML = content;
+              contentDiv.style.padding = "10px";
+              topicContainer.appendChild(contentDiv);
+
+              // Append the topic container to the questionContentDiv
+              document
+                .getElementById("questiondiv")
+                .appendChild(topicContainer);
+            }
+          });
+        } else {
+          console.warn("No data available for the key:", uniqueKey);
+        }
+      }
+
+      // Call this function to load and display results
+      loadAllResults();
+
+      // Fetch topics, scores, and total marks from localStorage
+      const data2 = JSON.parse(localStorage.getItem(uniqueKey)) || {};
+      const topics = data2.topics || [];
+      console.log("topics", topics);
+
+      /// Fetch scores and total marks using the unique key
+      const scores = topics.map(
+        (topic) => parseInt(data2[`${topic.heading}_score`]) || 0
+      );
+      const totalMarks = topics.map(
+        (topic) => parseInt(data2[`${topic.heading}_totalQuestions`]) || 0
+      );
+
+      // Determine maximum total marks to scale the y-axis
+      const maxTotalMarks = Math.max(...totalMarks);
+
+      // Data for the chart
+      const data = {
+        labels: topics.map((topic) => topic.heading),
+        datasets: [
+          {
+            label: "Marks Scored",
+            data: scores,
+            backgroundColor: "rgba(70, 192, 192, 0.6)",
+            borderColor: "rgba(70, 192, 192, 1)",
+            borderWidth: 1,
+          },
+        ],
+      };
+
+      // Configuration options for the chart
+      const options = {
+        scales: {
+          y: {
+            beginAtZero: true,
+            suggestedMax: maxTotalMarks, // Set max value based on total questions
+            title: {
+              display: true,
+              text: "Marks Scored",
+            },
+          },
+        },
+        plugins: {
+          legend: {
+            position: "top",
+          },
+          tooltip: {
+            callbacks: {
+              label: function (context) {
+                return context.dataset.label + ": " + context.raw;
+              },
+            },
+          },
+        },
+      };
+
+      // Display the marks breakdown
+      const marksList = document.getElementById("marksList");
+      topics.forEach((topic, index) => {
+        const li = document.createElement("li");
+        li.innerHTML = `<strong>${topic.heading}:</strong> <span>${scores[index]} / ${totalMarks[index]}</span>`;
+        marksList.appendChild(li);
+      });
+
+      async function downloadReport() {
+        const { jsPDF } = window.jspdf;
+
+        // Show the loading overlay
+        document.getElementById("loadingOverlay").style.display = "flex";
+
+        // Create a new jsPDF instance
+        const pdf = new jsPDF("p", "mm", "a4");
+
+        // Set standard font size
+        pdf.setFontSize(12);
+
+        // Function to convert an element to an image
+        async function getElementImage(elementId) {
+          const element = document.getElementById(elementId);
+
+          const canvas = await html2canvas(element, { scale: 1 }); // Reduce scale for lower resolution
+          return canvas.toDataURL("image/jpeg", 0.9); // Use JPEG and reduce quality
+        }
+
+        // Function to load an image
+        async function loadImage(src) {
+          return new Promise((resolve) => {
+            const img = new Image();
+            img.onload = () => resolve(img);
+            img.src = src;
+          });
+        }
+
+        // Add a short delay to ensure all elements are rendered
+        await new Promise((resolve) => setTimeout(resolve, 500));
+
+        // Load the logo
+        const logo = await loadImage("./assests/logo/Logo.png");
+        const banner = await loadImage("./assests/logo/banner.png");
+        const logoWidth = 30; // Adjust the size of the logo
+        const logoHeight = (logo.height * logoWidth) / logo.width;
+        const bannerWidth = pdf.internal.pageSize.getWidth() - 20; // Width of the banner
+        const bannerHeight = (banner.height * bannerWidth) / banner.width; // Height of the banner
+
+        // Define top margin for the breakdown
+        const topMargin = 20; // Adjust this value to set the margin
+
+        // Add a page with the banner image and breakdown image
+        pdf.addImage(banner.src, "PNG", 10, 10, bannerWidth, bannerHeight);
+        // Add a page with the breakdown image
+        // Add the breakdown image
+        const breakdownImage = await getElementImage("breakdown");
+        const breakdownWidth = pdf.internal.pageSize.getWidth() - 20;
+        const breakdownCanvas = await html2canvas(
+          document.getElementById("breakdown"),
+          { scale: 0.75 }
+        );
+        const breakdownHeight =
+          (breakdownCanvas.height * breakdownWidth) / breakdownCanvas.width;
+        pdf.addImage(
+          breakdownImage,
+          "PNG",
+          10,
+          10 + bannerHeight + topMargin, // Position the breakdown image with margin
+          breakdownWidth,
+          breakdownHeight
+        );
+        async function addPaginatedContent(contentDiv, pdf) {
+          const contentPages = document.querySelectorAll(".question-page");
+
+          for (const page of contentPages) {
+            // Ensure the page is visible before capturing it
+            page.style.display = "block";
+
+            // Capture the page as a canvas
+            const pageCanvas = await html2canvas(page, { scale: 1 });
+            const pageImage = pageCanvas.toDataURL("image/jpeg", 0.9);
+            const pageWidth = pdf.internal.pageSize.getWidth() - 20;
+            const pageHeight = pdf.internal.pageSize.getHeight() - 20;
+
+            const imgWidth = pageWidth;
+            const imgHeight = (pageCanvas.height * imgWidth) / pageCanvas.width;
+
+            // Check if the image height exceeds the available space on the current page
+            if (imgHeight > pageHeight) {
+              // If it does, add the image to multiple pages
+              let offsetY = 0;
+              while (offsetY < imgHeight) {
+                if (offsetY > 0) {
+                  // pdf.addPage();
+                }
+                pdf.addImage(
+                  pageImage,
+                  "JPEG",
+                  10,
+                  10 - offsetY,
+                  imgWidth,
+                  Math.min(pageHeight, imgHeight - offsetY)
+                );
+                  // Add the logo to the top right corner
+              pdf.addImage(
+                logo.src,
+                "JPEG",
+                pdf.internal.pageSize.getWidth() - logoWidth - 10,
+                10,
+                logoWidth,
+                logoHeight
+              );
+                offsetY += Math.min(pageHeight, imgHeight - offsetY);
+              }
+            } else {
+              // If it fits, add the image to the current page
+              pdf.addImage(pageImage, "JPEG", 10, 10, imgWidth, imgHeight);
+                // Add the logo to the top right corner
+                pdf.addImage(
+                logo.src,
+                "JPEG",
+                pdf.internal.pageSize.getWidth() - logoWidth - 10,
+                10,
+                logoWidth,
+                logoHeight
+              );
+            }
+
+            // Add a new page if there's more content
+            if (page !== contentPages[contentPages.length - 1]) {
+              pdf.addPage();
+            }
+
+            // Hide the page after processing it
+            page.style.display = "none";
+          }
+        }
+
+        // Add paginated content to the PDF
+        pdf.addPage();
+        await addPaginatedContent(document.getElementById("questiondiv"), pdf);
+
+        // Fetch topics, scores, and total marks from localStorage
+        // const topics = JSON.parse(localStorage.getItem("topics")) || [];
+
+        // const topics =
+        //   JSON.parse(localStorage.getItem(`${uniqueKey}_topics`)) || [];
+
+        // const topicHeading = "PS"; // Use the first topic's heading or a default name
+
+        // // Generate the PDF filename
+        // const pdfFilename = `${topicHeading} Practise-sheet-report.pdf`;
+
+        // Save the PDF with the generated filename
+        // pdf.save(pdfFilename);
+
+        pdf.save(`${className}-PS.pdf`);
+
+        // Hide the loading overlay
+        document.getElementById("loadingOverlay").style.display = "none";
+
+        // Clear local storage
+        clearLocalStorage();
+        window.location.href = 'thankyou.html';
+
+
+      }
+
+      async function addContentWithPagination(contentDiv, pdf) {
+        const contentCanvas = await html2canvas(contentDiv, { scale: 0.5 });
+        const contentImage = contentCanvas.toDataURL("image/png");
+
+        const pageWidth = pdf.internal.pageSize.getWidth() - 20;
+        const pageHeight = pdf.internal.pageSize.getHeight() - 20;
+
+        const imgWidth = pageWidth;
+        const imgHeight =
+          (contentCanvas.height * imgWidth) / contentCanvas.width;
+
+        let offsetY = 0;
+
+        while (offsetY < imgHeight) {
+          const heightToPrint = Math.min(pageHeight, imgHeight - offsetY);
+          pdf.addImage(
+            contentImage,
+            "PNG",
+            10,
+            10 - offsetY,
+            imgWidth,
+            heightToPrint
+          );
+          offsetY += heightToPrint;
+          if (offsetY < imgHeight) {
+            // pdf.addPage();
+          }
+        }
+      }
+
+      document
+        .getElementById("downloadBtn")
+        .addEventListener("click", downloadReport);
+      document
+        .getElementById("downloadBtn2")
+        .addEventListener("click", downloadReport);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,532 @@
+{
+  "heading": "Diphthongs “ai” and “ay”",
+  "topics": [
+    {
+      "heading": "Diphthongs “ai” and “ay”",
+      "questions": [
+         {
+          "questionNo": 1,
+          "question": "Hear the word!<br> What's missing: \"r__n\"? <br> <img width='150px' src='./assests/images/question/1.jpg'>",
+          "questionSound":"./assests/sounds/rain.mp3",
+          "options": [
+            {
+              "text": "aywwww",
+              "image": "./assests_images/images/1.jpg"
+            },
+            {
+              "text": "ai",
+              "image": "./assests_images/images/2.jpg"
+            },
+            {
+              "text": "ia",
+              "image": "./assests_images/images/3.jpg"
+            },
+            {
+              "text": "ya",
+              "image": "./assests_images/images/4.jpg"
+            }
+          ],
+          "answer": 1,
+          "explanation": "The correct spelling is 'rain,' with 'ai' in the middle."
+        },
+        {
+          "questionNo": 2,
+          "question": "Which word has a different spelling pattern?",
+          "options": [
+            {
+              "text": "Hay",
+              "image": "./assests_images/images/5.jpg",
+              "sound": "./assests/sounds/hay.mp3"
+            },
+            {
+              "text": "Day",
+              "image": "./assests_images/images/6.jpg",
+              "sound": "./assests/sounds/day.mp3"
+            },
+            {
+              "text": "Say",
+              "image": "./assests_images/images/7.jpg",
+              "sound": "./assests/sounds/say.mp3"
+            },
+            {
+              "text": "Paid",
+              "image": "./assests_images/images/8.jpg",
+              "sound": "./assests/sounds/paid.mp3"
+            }
+          ],
+          "answer": 3,
+          "explanation": "'Paid' uses 'ai' in the middle, while the others use 'ay' at the end."
+        },
+        {
+          "questionNo": 3,
+          "questionSound":"./assests/sounds/wait.mp3",
+
+          "question": "Hear the word! <br> What's the correct spelling? <br> <img width='150px' src='./assests/images/question/2.jpg'>",
+          "options": [
+            {
+              "text": "Wayt",
+              "image": "./assests_images/images/9.jpg"
+            },
+            {
+              "text": "Wate",
+              "image": "./assests_images/images/10.jpg"
+            },
+            {
+              "text": "Wait",
+              "image": "./assests_images/images/11.jpg"
+            },
+            {
+              "text": "Waight",
+              "image": "./assests_images/images/12.jpg"
+            }
+          ],
+          "answer": 2,
+          "explanation": "'Wait' is correctly spelled with 'ai' in the middle. It means to stay in one place until something happens."
+        },
+        {
+          "questionNo": 4,
+          "questionSound":"./assests/sounds/stay.mp3",
+
+          "question": "In 'stay,' where's the 'ay' sound? <br> <img width='150px' src='./assests/images/question/3.jpg'>",
+          "options": [
+            {
+              "text": "At the beginning",
+              "image": "./assests_images/images/13.jpg"
+            },
+            {
+              "text": "In the middle",
+              "image": "./assests_images/images/14.jpg"
+            },
+            {
+              "text": "At the end",
+              "image": "./assests_images/images/15.jpg",
+              "sound": "./assests/sounds/stay_end.mp3"
+            }
+          ],
+          "answer": 2,
+          "explanation": "'ay' appears at the end of 'stay.' It follows the rule of diphthong 'ay.'"
+        },
+        {
+          "questionNo": 5,
+          "question": "Which word uses 'ai' incorrectly?",
+          
+          "options": [
+            {
+              "text": "Maid",
+              "image": "./assests_images/images/16.jpg",
+              "sound": "./assests/sounds/maid.mp3"
+            },
+            {
+              "text": "Paid",
+              "image": "./assests_images/images/17.jpg",
+              "sound": "./assests/sounds/paid.mp3"
+            },
+            {
+              "text": "Said",
+              "image": "./assests_images/images/18.jpg",
+              "sound": "./assests/sounds/said.mp3"
+            },
+            {
+              "text": "Plai",
+              "image": "./assests_images/images/19.jpg",
+              "sound": "./assests/sounds/play.mp3"
+            }
+          ],
+          "answer": 3,
+          "explanation": "The correct word is 'Play' and it does not follow the rule of diphthong 'ai'. 'ai' never comes at the end."
+        },
+        {
+          "questionNo": 6,
+          "questionSound":"./assests/sounds/day.mp3",
+
+          "question": "Hear the word!<br> What's the correct spelling? <br> <img width='150px' src='./assests/images/question/4.jpg'>",
+          "options": [
+            {
+              "text": "Daiy",
+              "image": "./assests_images/images/20.jpg"
+            },
+            {
+              "text": "Dey",
+              "image": "./assests_images/images/21.jpg"
+            },
+            {
+              "text": "Day",
+              "image": "./assests_images/images/22.jpg"
+            },
+            {
+              "text": "Dai",
+              "image": "./assests_images/images/23.jpg"
+            }
+          ],
+          "answer": 2,
+          "explanation": "'Day' is correctly spelt with 'ay' at the end. It follows the rule of diphthong 'ay.'"
+        },
+        {
+          "questionNo": 7,
+          "question": "Which word doesn't rhyme with the others?",
+          "options": [
+            {
+              "text": "Play",
+              "image": "./assests_images/images/24.jpg",
+              "sound": "./assests/sounds/play.mp3"
+            },
+            {
+              "text": "Say",
+              "image": "./assests_images/images/25.jpg",
+              "sound": "./assests/sounds/say.mp3"
+            },
+            {
+              "text": "Way",
+              "image": "./assests_images/images/26.jpg",
+              "sound": "./assests/sounds/way.mp3"
+            },
+            {
+              "text": "Paid",
+              "image": "./assests_images/images/27.jpg",
+              "sound": "./assests/sounds/paid.mp3"
+            }
+          ],
+          "answer": 3,
+          "explanation": "'Paid' uses 'ai' and doesn't rhyme with the 'ay' words. The other options rhyme with each other."
+        },
+        {
+          "questionNo": 8,
+          "questionSound":"./assests/sounds/main.mp3",
+
+          "question": "In 'main,' what makes the long A sound? <br> <img width='150px' src='./assests/images/question/5.jpg'>",
+          "options": [
+            {
+              "text": "ma",
+              "image": "./assests_images/images/28.jpg"
+            },
+            {
+              "text": "ai",
+              "image": "./assests_images/images/29.jpg"
+            },
+            {
+              "text": "in",
+              "image": "./assests_images/images/30.jpg"
+            },
+            {
+              "text": "n",
+              "image": "./assests_images/images/31.jpg"
+            }
+          ],
+          "answer": 1,
+          "explanation": "The 'ai' in 'main' makes the long A sound. If you pronounce 'ai' in 'main' you hear a long 'A' sound."
+        },
+        {
+          "questionNo": 9,
+          "question": "Which is not a correct 'ay' word?",
+          "options": [
+            {
+              "text": "Bay",
+              "image": "./assests_images/images/32.jpg"
+            },
+            {
+              "text": "Say",
+              "image": "./assests_images/images/33.jpg"
+            },
+            {
+              "text": "Pay",
+              "image": "./assests_images/images/34.jpg"
+            },
+            {
+              "text": "Thay",
+              "image": "./assests_images/images/35.jpg"
+            }
+          ],
+          "answer": 3,
+          "explanation": "This is not a correct English word; it should be 'they.' It is used to refer to two or more people or things."
+        },{
+          "questionNo": 10,
+          "questionSound":"./assests/sounds/sail.mp3",
+
+          "question": "Hear the word!<br> What's missing: \"s__l\"? <br> <img width='150px' src='./assests/images/question/6.jpg'>",
+          "options": [
+            {
+              "text": "ay",
+              "image": "./assests_images/images/36.jpg"
+            },
+            {
+              "text": "ai",
+              "image": "./assests_images/images/37.jpg"
+            },
+            {
+              "text": "a",
+              "image": "./assests_images/images/38.jpg"
+            },
+            {
+              "text": "i",
+              "image": "./assests_images/images/39.jpg"
+            }
+          ],
+          "answer": 1,
+          "explanation": "The correct spelling is 'sail,' with 'ai' in the middle. A big piece of cloth on a boat helps it move when the wind blows."
+        },
+        {
+          "questionNo": 11,
+          "questionSound":"./assests/sounds/day.mp3",
+
+          "question": "Which word rhymes with 'day'? <br> <img width='150px' src='./assests/images/question/7.jpg'>",
+          "options": [
+            {
+              "text": "My",
+              "image": "./assests_images/images/40.jpg"
+            },
+            {
+              "text": "Boy",
+              "image": "./assests_images/images/41.jpg"
+            },
+            {
+              "text": "Ray",
+              "image": "./assests_images/images/42.jpg"
+            },
+            {
+              "text": "Toy",
+              "image": "./assests_images/images/43.jpg"
+            }
+          ],
+          "answer": 2,
+          "explanation": "'Ray' ends with 'ay' and rhymes with 'day.'"
+        },
+        {
+          "questionNo": 12,
+          "questionSound":"./assests/sounds/chain.mp3",
+
+          "question": "In the word 'chain,' where is the 'ai' sound? <br> <img width='150px' src='./assests/images/question/8.jpg'>",
+          "options": [
+            {
+              "text": "At the beginning",
+              "image": "./assests_images/images/44.jpg"
+            },
+            {
+              "text": "In the middle",
+              "image": "./assests_images/images/45.jpg"
+            },
+            {
+              "text": "At the end",
+              "image": "./assests_images/images/46.jpg"
+            }
+          ],
+          "answer": 1,
+          "explanation": "'ai' appears in the middle of 'chain.' The diphthong 'ai' comes at the start or in the middle."
+        },
+        {
+          "questionNo": 13,
+          "questionSound":"./assests/sounds/sail.mp3",
+
+          "question": "Which word has the same sound as 'sail'? <br> <img width='150px' src='./assests/images/question/9.jpg'>",
+          "options": [
+            {
+              "text": "Sale",
+              "image": "./assests_images/images/47.jpg",
+              "sound": "./assests/sounds/sale.mp3"
+            },
+            {
+              "text": "Sell",
+              "image": "./assests_images/images/48.jpg",
+              "sound": "./assests/sounds/sell.mp3"
+            },
+            {
+              "text": "Soul",
+              "image": "./assests_images/images/49.jpg",
+              "sound": "./assests/sounds/soul.mp3"
+            },
+            {
+              "text": "Seal",
+              "image": "./assests_images/images/50.jpg",
+              "sound": "./assests/sounds/seal.mp3"
+            }
+          ],
+          "answer": 0,
+          "explanation": "'Sale' has the same long A sound as 'sail,' though spelt differently."
+        },
+        {
+          "questionNo": 14,
+          "questionSound":"./assests/sounds/waiting.mp3",
+
+          "question": "Which word is not spelled correctly? <br> <img width='150px' src='./assests/images/question/10.jpg'>",
+          "options": [
+            {
+              "text": "Stray",
+              "image": "./assests_images/images/51.jpg",
+              "sound": "./assests/sounds/stray.mp3"
+            },
+            {
+              "text": "Pray",
+              "image": "./assests_images/images/52.jpg",
+              "sound": "./assests/sounds/pray.mp3"
+            },
+            {
+              "text": "Thay",
+              "image": "./assests_images/images/53.jpg",
+              "sound": "./assests/sounds/they.mp3"
+            },
+            {
+              "text": "Tray",
+              "image": "./assests_images/images/54.jpg",
+              "sound": "./assests/sounds/tray.mp3"
+            }
+          ],
+          "answer": 2,
+          "explanation": "This should be spelt 'they' and doesn't use the 'ay' diphthong."
+        },
+        {
+          "questionNo": 15,
+          "question": "In 'waiting,' what makes the long A sound?",
+          "options": [
+            {
+              "text": "wa",
+              "image": "./assests_images/images/55.jpg"
+            },
+            {
+              "text": "ai",
+              "image": "./assests_images/images/56.jpg"
+            },
+            {
+              "text": "ti",
+              "image": "./assests_images/images/57.jpg"
+            },
+            {
+              "text": "ing",
+              "image": "./assests_images/images/58.jpg"
+            }
+          ],
+          "answer": 1,
+          "explanation": "The 'ai' in 'waiting' makes the long A sound. Try saying it /Waiting/."
+        },
+        {
+          "questionNo": 16,
+          "question": "Pick the odd one out:",
+          "options": [
+            {
+              "text": "Spray",
+              "image": "./assests_images/images/59.jpg"
+            },
+            {
+              "text": "Delay",
+              "image": "./assests_images/images/60.jpg"
+            },
+            {
+              "text": "Betray",
+              "image": "./assests_images/images/61.jpg"
+            },
+            {
+              "text": "Explain",
+              "image": "./assests_images/images/62.jpg"
+            }
+          ],
+          "answer": 3,
+          "explanation": "'Explain' uses 'ai' in the middle, while the others use 'ay' at the end."
+        },
+        {
+          "questionNo": 17,
+          "questionSound":"./assests/sounds/airplane.mp3",
+
+          "question": "Look at the image!<br> What's the correct spelling? <br> <img width='150px' src='./assests/images/question/11.jpg'>",
+          "options": [
+            {
+              "text": "Airplayne",
+              "image": "./assests_images/images/63.jpg"
+            },
+            {
+              "text": "Airplan",
+              "image": "./assests_images/images/64.jpg"
+            },
+            {
+              "text": "Airplane",
+              "image": "./assests_images/images/65.jpg"
+            },
+            {
+              "text": "Airplain",
+              "image": "./assests_images/images/66.jpg"
+            }
+          ],
+          "answer": 2,
+          "explanation": "'Airplane' is correctly spelt with 'ai' in the first part. This word follows the rule of the diphthong 'ai.'"
+        },
+        {
+          "questionNo": 18,
+          "questionSound":"./assests/sounds/mailbox.mp3",
+
+          "question": "Hear the word!<br> What's missing: \"m__lbox\"? <br> <img width='150px' src='./assests/images/question/12.jpg'>",
+          "options": [
+            {
+              "text": "ay",
+              "image": "./assests_images/images/67.jpg"
+            },
+            {
+              "text": "ai",
+              "image": "./assests_images/images/68.jpg"
+            },
+            {
+              "text": "a",
+              "image": "./assests_images/images/69.jpg"
+            },
+            {
+              "text": "i",
+              "image": "./assests_images/images/70.jpg"
+            }
+          ],
+          "answer": 1,
+          "explanation": "The correct spelling is 'mailbox,' with 'ai' in the middle."
+        },
+        {
+          "questionNo": 19,
+          "questionSound":"./assests/sounds/sunday.mp3",
+
+          "question": "Hear the word!<br> What's the correct spelling? <br> <img width='150px' src='./assests/images/question/13.jpg'>",
+          "options": [
+            {
+              "text": "Sundae",
+              "image": "./assests_images/images/71.jpg"
+            },
+            {
+              "text": "Sunday",
+              "image": "./assests_images/images/72.jpg"
+            },
+            {
+              "text": "Sundai",
+              "image": "./assests_images/images/73.jpg"
+            },
+            {
+              "text": "Sundey",
+              "image": "./assests_images/images/74.jpg"
+            }
+          ],
+          "answer": 1,
+          "explanation": "'Sunday' is correctly spelled with 'ay' at the end. It is the day of the week before Monday and the following Saturday."
+        },
+        {
+          "questionNo": 20,
+          "question": "Which word uses 'ai' at the beginning?",
+          "options": [
+            {
+              "text": "Rain",
+              "image": "./assests_images/images/75.jpg",
+              "sound": "./assests/sounds/rain.mp3"
+            },
+            {
+              "text": "Pain",
+              "image": "./assests_images/images/76.jpg",
+              "sound": "./assests/sounds/pain.mp3"
+            },
+            {
+              "text": "Aim",
+              "image": "./assests_images/images/77.jpg",
+              "sound": "./assests/sounds/aim.mp3"
+            },
+            {
+              "text": "Main",
+              "image": "./assests_images/images/78.jpg",
+              "sound": "./assests/sounds/main.mp3"
+            }
+          ],
+          "answer": 2,
+          "explanation": "'Aim' is the only word that starts with 'ai.' It points or directs at a target or has the intention of achieving."
+        }
+      ]
+    }
+  ]
+}

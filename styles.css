@@ -1,0 +1,185 @@
+
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #F5F5F5; /* Light gray for background */
+    color: #333;
+    margin: 0;
+    padding: 0;
+    font-size: 20px; /* Increased base font size */
+  }
+  
+  
+  .header {
+    /* width: 100%; */
+    box-shadow: 5px 5px 10px rgb(0, 0, 0);
+    padding: 5px 30px;
+    background-color: white; 
+text-align: left;    
+  
+  }
+  
+  .logo {
+    width: 5%; /* Slightly larger logo */
+  }
+  img{
+    vertical-align: middle;
+  }
+  
+  .header-image {
+    width: 30%; 
+    height: auto;
+    margin-bottom: 10px;
+  }
+  
+  #heading {
+    margin-top: 25px;
+    /* color: #D6B65B;  */
+    font-size: 3rem; /* Larger heading font size */
+    font-weight: 600;
+  }
+  .maindiv{
+    display: flex;
+    gap: 10px;
+  }
+  .quiz-container {
+    margin-top: 40px; /* Increased spacing */
+  }
+  
+  .numdiv {
+    font-size: 2.5rem; 
+    color: #7A9A5B;
+    font-family: Georgia, serif;
+  }
+  
+  .imgdiv img {
+    /* margin-top: 30px;  */
+   
+  }
+  
+  #questiondiv {
+    padding: 30px; 
+    padding-bottom: 0;
+    border-radius: 10px; /* Slightly more rounded corners */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    font-size: 1.8rem; /* Larger font size for questions */
+  }
+  
+  .menu ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .menu li {
+    margin-bottom: 20px; /* Increased spacing between options */
+    /* font-size: 2rem;  */
+    /* color: #D7A2A0; */
+    input:hover{
+        cursor: pointer;
+    }
+  }
+  
+  .btn {
+     /* Increased spacing around buttons */
+    font-size: 1.7rem; /* Larger font size for buttons */
+    background-color: #27694e; 
+    border-color: #27694e; /* Matching border color for buttons */
+    color: white;
+  }
+  .btnOption{
+    font-size: 1.7rem; /* Larger font size for buttons */
+    background-color: #699e19; 
+    border-color: #699e19; /* Matching border color for buttons */
+    color: white;
+    width: 100%;
+  }
+
+  .btnButton{
+    font-size: 1.7rem; /* Larger font size for buttons */
+    background-color: #D5A35F; 
+    border-color: #D5A35F; /* Matching border color for buttons */
+    color: white;
+
+  }
+  
+  .btn:hover {
+    background-color: #BF6C6C; 
+    border-color: #BF6C6C; 
+  }
+  
+  #result {
+    margin-top: 20px; /* Increased spacing */
+    font-size: 1.8rem; /* Larger font size for results */
+    color: #6D8E8F; /* Dark Pastel Teal for result text */
+  }
+  
+  .progress {
+    height: 30px; /* Increased height for progress bar */
+    margin-top: 20px; /* Increased spacing */
+  }
+  
+  .progress-bar {
+    transition: width 0.6s ease;
+  }
+  
+  #picdiv {
+    /* margin-top: 40px;  */
+    padding-top: 61px; /* Increased padding */
+    text-align: center;
+    background-image: url(assests/images/background.png);
+    color: #333; /* Darker color for text */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    font-size: 1.8rem; /* Larger font size for results and feedback */
+    height: 365px;
+    width: 815px;
+    background-repeat: round;
+  }
+  
+  .smallbtn {
+    margin: 3px; /* Increased spacing */
+    font-size: 1.5rem; /* Larger font size for small buttons */
+    background-color: #FFDE4D; 
+    border-color: #6D8E8F; /* Matching border color for small buttons */
+    color: black;
+    margin-bottom: 34px;
+  }
+  
+  .smallbtn:hover {
+    background-color:white; 
+    border-color: black; 
+    color: black
+  }
+  
+  .highlighted-btn {
+    background-color: yellow;
+    color: black;
+    color: #333;
+    background-color: #fff;
+    border-color: #ccc;
+  }
+  
+  /* CSS for Answered Button */
+.answered-btn {
+    background-color: #4CAF50; /* Green background for answered button */
+    color: white; /* White text color */
+}
+
+
+.next-btn-progress{
+  font-size:x-large;
+  background-color: #4CAF50; 
+  border-color: black; /* Matching border color for buttons */
+  color: white;
+  font-weight: 700;
+}
+
+/* Increase the size of radio buttons */
+input[type="radio"] {
+  transform: scale(1.5); /* Adjust the scale value as needed */
+  margin-right: 10px; /* Add some space between the radio button and the label */
+}
+
+/* Adjust the label to align with the larger radio button */
+input[type="radio"] + label {
+  font-size: 1.2rem; /* Adjust the font size as needed */
+}
